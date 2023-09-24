@@ -1,0 +1,23 @@
+{
+  "name": "image-toolkit",
+  "version": "1.0.0",
+  "description": "Terminal application for image compression, image format conversion and image information ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nishaYO/image-toolkit.git"
+  },
+  "author": "nishaYO",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nishaYO/image-toolkit/issues"
+  },
+  "homepage": "https://github.com/nishaYO/image-toolkit#readme",
+  "dependencies": {
+    "commander": "^11.0.0",
+    "sharp": "^0.32.6"
+  }
+}
