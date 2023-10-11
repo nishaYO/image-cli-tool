@@ -1,5 +1,5 @@
 {
-  "name": "image-toolkit",
+  "name": "@nisha-singhal/image-toolkit",
   "version": "1.0.0",
   "description": "Terminal application for image compression, image format conversion and image information ",
   "main": "index.js",
