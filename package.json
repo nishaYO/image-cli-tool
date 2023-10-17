@@ -1,8 +1,9 @@
 {
   "name": "@nisha-singhal/image-toolkit",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Terminal application for image compression, image format conversion and image information ",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
