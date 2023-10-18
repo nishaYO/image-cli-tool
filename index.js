@@ -5,13 +5,13 @@ const commander = new Command();
 import sharp from "sharp";
 import { extname, basename, join, dirname } from "path";
 
-async function imageToolkit() {
+async function imageCliTool() {
   
   // define basic info of the package
   commander
-    .name("Image Toolkit CLI")
+    .name("Image CLI tool")
     .description(
-      "Image Toolkit CLI that helps in manipulating images using your terminal."
+      "Image CLI tool that helps in manipulating images using your terminal."
     )
     .version("1.0.0");
 
@@ -71,6 +71,6 @@ async function imageToolkit() {
   }
 }
 
-export default imageToolkit;
+export default imageCliTool;
 
-imageToolkit();
+imageCliTool();

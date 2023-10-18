@@ -1,6 +1,6 @@
 {
-  "name": "@nisha-singhal/image-toolkit",
-  "version": "1.2.0",
+  "name": "image-cli-tool",
+  "version": "1.0.0",
   "description": "Terminal application for image compression, image format conversion and image information ",
   "main": "index.js",
   "type": "module",
@@ -9,20 +9,27 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/nishaYO/image-toolkit.git"
+    "url": "git+https://github.com/nishaYO/image-cli-tool.git"
   },
   "author": "nishaYO",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/nishaYO/image-toolkit/issues"
+    "url": "https://github.com/nishaYO/image-cli-tool/issues"
   },
-  "homepage": "https://github.com/nishaYO/image-toolkit#readme",
+  "homepage": "https://github.com/nishaYO/image-cli-tool#readme",
   "dependencies": {
     "commander": "^11.0.0",
     "sharp": "^0.32.6"
   },
-  "keywords": ["image", "image toolkit", "image processing", "compression", "conversion"],
+  "keywords": [
+    "image",
+    "image cli",
+    "image terminal",
+    "image processing",
+    "compression",
+    "conversion"
+  ],
   "bin": {
-    "image-toolkit": "index.js"
+    "img-cli": "index.js"
   }
 }
