@@ -63,6 +63,25 @@ async function imageCliTool() {
       }
     });
 
+  // create image rotate
+  commander
+  .command('rotate <inputFile> <outputFile> <rotateAngle>')
+  .description('Rotate an image by a specified angle')
+  .action(async (inputFile, outputFile, rotateAngle) => {
+    try {
+      const angle = parseInt(rotateAngle); // Convert the angle to an integer
+      const rotate = await sharp(inputFile).rotate(angle)
+        .toFile(outputFile, (err, info) => {
+          if (err) {
+            console.error(err.message);
+          } else {
+            console.log('Image rotated');
+          }
+        });
+    } catch (error) {
+      console.error(error.message);
+    }
+  });
   try {
     // Parse command-line arguments
     await commander.parseAsync(process.argv);
