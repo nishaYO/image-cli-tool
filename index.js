@@ -65,10 +65,13 @@ async function imageCliTool() {
 
   // create image rotate
   commander
-  .command('rotate <inputFile> <outputFile> <rotateAngle>')
+  .command('rotate <inputFile> <rotateAngle>')
   .description('Rotate an image by a specified angle')
-  .action(async (inputFile, outputFile, rotateAngle) => {
+  .action(async (inputFile, rotateAngle) => {
     try {
+      // create output file name
+      const outputFileName = basename(inputFile, extname(inputFile)) + "_rotated_" + rotateAngle + extname(inputFile); // assuming the user may give absolute path
+      const outputFile = join(dirname(inputFile), outputFileName);
       const angle = parseInt(rotateAngle); // Convert the angle to an integer
       const rotate = await sharp(inputFile).rotate(angle)
         .toFile(outputFile, (err, info) => {
