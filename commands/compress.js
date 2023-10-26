@@ -1,6 +1,6 @@
 import { Command } from "commander";
 import sharp from "sharp";
-import { extname, basename, join, dirname } from "path";
+import { extname, basename, resolve, dirname } from "path";
 
 const compressCommand = new Command();
 
@@ -11,12 +11,12 @@ compressCommand
   .action(async (inputFile) => {
     try {
       // create output file name
-      const outputFileName = basename(inputFile, extname(inputFile)) + "_compressed.jpeg";
-      const outputPath = join(dirname(inputFile), outputFileName);
-
+      const outputFile = basename(inputFile, extname(inputFile)) + "_compressed" + extname(inputFile);
+      const outputPath = resolve(dirname(inputFile), outputFile);
+      const quality = 60
       // compress input file
-      const info = await sharp(inputFile).jpeg({ quality: 60 }).toFile(outputPath);
-      console.log("Image compressed:", info);
+      const info = await sharp(inputFile).jpeg({ quality: quality }).toFile(outputFile);
+      console.log(`\nImage compressed down to ${quality}%.\n\nSee here: ${outputPath}\n\n`);
     } catch (err) {
       console.error(err);
     }
