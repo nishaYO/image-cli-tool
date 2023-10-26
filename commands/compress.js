@@ -18,13 +18,13 @@ compressCommand
       
       // check if the -q option value valid or not
       if (isNaN(qualityOption) || quality > 100 || quality < 1) {
-        throw new Error("Invalid value for the quality option. Quality should be between 1 and 100.\n");
+        throw new Error("Invalid value for the quality option. Quality should be between 1 and 100.");
       }
 
       const quality =  qualityOption || 60; //default compression: 60% 
       // compress input file
       const info = await sharp(inputFile).jpeg({ quality: quality }).toFile(outputFile);
-      console.log(`\nImage compressed down to ${quality}%.\n\nSee here: ${outputPath}\n\n`);
+      console.log(`Image compressed down to ${quality}%.\nSee here: ${outputPath}`);
     } catch (err) {
       console.error(err.message);
     }
