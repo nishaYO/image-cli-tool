@@ -1,6 +1,6 @@
 import { Command } from "commander";
 import sharp from "sharp";
-
+import { extname, resolve } from "path";
 const infoCommand = new Command();
 
 infoCommand
@@ -10,7 +10,19 @@ infoCommand
   .action(async (inputFile) => {
     try {
       const metadata = await sharp(inputFile).metadata();
-      console.log("Image information:", metadata);
+      const imageInfo = {
+        Format: (extname(inputFile).slice(1)) || "Unknown",
+        Location: resolve(inputFile) || "Unknown",
+        Width: metadata.width || "Unknown",
+        Height: metadata.height || "Unknown",
+        Density: metadata.density || "Unknown",
+        IsProgressive: metadata.isProgressive || "Unknown",
+        // todos
+        // FileSize: metadata.size || "Unknown",
+        // createdWhen: "Information not available",
+        // geoCoordinates: "Information not available",
+      };
+      console.log("Image information\n", imageInfo);
     } catch (err) {
       console.error(err);
     }
