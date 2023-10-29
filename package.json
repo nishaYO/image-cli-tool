@@ -1,6 +1,6 @@
 {
   "name": "image-cli-tool",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "description": "Terminal application for image compression, image format conversion and image information ",
   "main": "index.js",
   "type": "module",

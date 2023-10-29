@@ -15,7 +15,7 @@ async function imageCliTool() {
     .description(
       "Image CLI tool that helps in manipulating images using your terminal."
     )
-    .version("2.1.0");
+    .version("2.2.0");
 
   // add imported module commands
   commander.addCommand(compressCommand);
