@@ -23,11 +23,6 @@ expect(2 + 2).to.equal(4);
 // Using should style
 (2 + 2).should.equal(4);
 
-npx img-cli compress .\myphoto_tbh.png 
-npx img-cli compress .\myphoto_tbh.png -q 0 
-npx img-cli compress .\myphoto_tbh.png -q 80 
-npx img-cli compress .\myphoto_tbh.png -q 
-
-npx img-cli rotate .\myphoto_tbh.jpeg 30
-npx img-cli rotate .\myphoto_tbh.jpeg
-npx img-cli rotate .\myphoto_tbh.tiff //does not exist
+npx img-cli rotate .\myimg.png 30
+npx img-cli rotate .\myimg.png
+npx img-cli rotate .\myimg.tiff //does not exist
