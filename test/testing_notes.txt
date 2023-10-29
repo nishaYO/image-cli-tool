@@ -23,13 +23,6 @@ expect(2 + 2).to.equal(4);
 // Using should style
 (2 + 2).should.equal(4);
 
-
-npx img-cli info .\myimg.jpeg
-npx img-cli info 
-npx img-cli info .\myimg.txt
-touch testing.txt
-npx img-cli info texting.txt
-
 npx img-cli compress .\myphoto_tbh.png 
 npx img-cli compress .\myphoto_tbh.png -q 0 
 npx img-cli compress .\myphoto_tbh.png -q 80 
