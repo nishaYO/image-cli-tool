@@ -1,6 +1,6 @@
 import { Command } from "commander";
 import sharp from "sharp";
-import { extname } from "path";
+import { extname, resolve, dirname } from "path";
 
 const convertCommand = new Command();
 
@@ -17,10 +17,12 @@ convertCommand
       if (inputFormat == outputFormat){
         throw Error(`The format of <inputFile> and <outputFile> cannot be same. Both files have same format: ${inputFormat}`);
       }
+      // create output file absolute path
+      const outputPath = resolve(dirname(inputFile), outputFile);
 
       // convert file format
       const info = await sharp(inputFile).toFile(outputFile);
-      console.log(`Image converted from ${inputFormat} to ${outputFormat} format.`, );
+      console.log(`Image converted from ${inputFormat} to ${outputFormat} format.\nSee here: ${outputPath}`, );
     } catch (err) {
       console.error(err.message);
     }
