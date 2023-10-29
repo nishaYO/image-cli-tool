@@ -14,10 +14,10 @@ compressCommand
       // create output file name
       const outputFile = basename(inputFile, extname(inputFile)) + "_compressed" + extname(inputFile);
       const outputPath = resolve(dirname(inputFile), outputFile);
-      const qualityOption = parseInt(option.quality, 10)
-      
+
       // check if the -q option value valid or not
-      if (isNaN(qualityOption) || quality > 100 || quality < 1) {
+      const qualityOption = parseInt(option.quality, 10)
+      if (!isNaN(qualityOption) && (qualityOption > 100 || qualityOption < 1)) {
         throw new Error("Invalid value for the quality option. Quality should be between 1 and 100.");
       }
 
@@ -31,4 +31,3 @@ compressCommand
   });
 
 export default compressCommand;
-// create optional subcommands 
