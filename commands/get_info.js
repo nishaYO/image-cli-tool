@@ -26,6 +26,12 @@ infoCommand
     } catch (err) {
       console.error(err);
     }
+  })
+  .on('--help', () => {
+    console.log('\nUsage:');
+    console.log('  img-cli info <inputFile>');
+    console.log('\nExamples:');
+    console.log('  $ img-cli info input.jpg');
   });
 
 export default infoCommand;

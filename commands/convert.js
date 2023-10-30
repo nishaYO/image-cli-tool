@@ -26,6 +26,13 @@ convertCommand
     } catch (err) {
       console.error(err.message);
     }
+  }).on('--help', () => {
+    console.log('\nUsage:');
+    console.log('  img-cli convert <inputFile> <outputFile>');
+    console.log('\nExamples:');
+    console.log('  $ img-cli convert input.jpg output.jpeg');
+    console.log('\nNote:');
+    console.log('  The <inputFile> and <outputFile> must have different formats.');
   });
 
 export default convertCommand;

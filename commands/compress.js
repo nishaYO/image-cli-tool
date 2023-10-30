@@ -28,6 +28,15 @@ compressCommand
     } catch (err) {
       console.error(err.message);
     }
-  });
+  })
+  .on('--help', () => {
+    console.log('\nUsage:');
+    console.log('  img-cli compress <inputFile> [-q <quality>]');
+    console.log('\nExamples:');
+    console.log('  $ img-cli compress input.jpg');
+    console.log('  $ img-cli compress input.jpg -q 80');
+    console.log('\nNote:');
+    console.log('  The value of -q should be between 1 and 100.');
+});
 
 export default compressCommand;

@@ -26,6 +26,15 @@ rotateCommand
     } catch (error) {
       console.error(error.message);
     }
+  })  
+  .on('--help', () => {
+    console.log('\nUsage:');
+    console.log('  img-cli rotate <inputFile> <rotateAngle>');
+    console.log('\nExamples:');
+    console.log('  $ img-cli rotate input.jpg 90');
+    console.log('  $ img-cli rotate input.jpg -45');
+    console.log('\nNote:');
+    console.log('  The <rotateAngle> can be any positive or negative angle.');
   });
 
 export default rotateCommand;
