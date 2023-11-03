@@ -1,9 +1,11 @@
 // rotate.js
 import { Command } from "commander";
 import sharp from "sharp";
-import { extname, basename, join, dirname } from "path";
+import { join, dirname } from "path";
+import { generateUniqueFilename } from "../fileUtils.js"
 
 const rotateCommand = new Command();
+
 
 rotateCommand
   .name("rotate")
@@ -12,7 +14,7 @@ rotateCommand
   .action(async (inputFile, rotateAngle) => {
     try {
       // create output file name
-      const outputFileName = basename(inputFile, extname(inputFile)) + "_rotated_" + rotateAngle + extname(inputFile);
+      const outputFileName = generateUniqueFilename(inputFile, "_rotated", rotateAngle);
       const outputFile = join(dirname(inputFile), outputFileName);
       const angle = parseInt(rotateAngle);
       const rotate = await sharp(inputFile).rotate(angle)

@@ -1,6 +1,7 @@
 import { Command } from "commander";
 import sharp from "sharp";
-import { extname, basename, resolve, dirname } from "path";
+import { resolve, dirname } from "path";
+import { generateUniqueFilename } from "../fileUtils.js"
 
 const compressCommand = new Command();
 
@@ -12,8 +13,8 @@ compressCommand
   .action(async (inputFile, option) => {
     try {
       // create output file name
-      const outputFile = basename(inputFile, extname(inputFile)) + "_compressed" + extname(inputFile);
-      const outputPath = resolve(dirname(inputFile), outputFile);
+      const outputFileName = generateUniqueFilename(inputFile, "_compressed");
+      const outputPath = resolve(dirname(inputFile), outputFileName);
 
       // check if the -q option value valid or not
       const qualityOption = parseInt(option.quality, 10)
@@ -23,7 +24,7 @@ compressCommand
 
       const quality =  qualityOption || 60; //default compression: 60% 
       // compress input file
-      const info = await sharp(inputFile).jpeg({ quality: quality }).toFile(outputFile);
+      const info = await sharp(inputFile).jpeg({ quality: quality }).toFile(outputFileName);
       console.log(`Image compressed down to ${quality}%.\nSee here: ${outputPath}`);
     } catch (err) {
       console.error(err.message);
