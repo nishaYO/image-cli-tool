@@ -8,16 +8,16 @@ import { existsSync } from "fs"; // To check if a file exists
  * @returns {string} - Unique filename.
  */
 
-export function generateUniqueFilename(inputFile, ...args) {
+export function generateUniqueFilename(inputFile, ...suffixes) {
   // Generate initial filename
   let count = 0;
-  let outputFile = generateFilenameWithCount(inputFile, count, ...args);
+  let outputFile = generateFilenameWithCount(inputFile, count, ...suffixes);
   let outputPath = resolve(dirname(inputFile), outputFile);
   
   // Check for filename collisions and increment count if needed
   while (existsSync(outputPath)) {
     count++;
-    outputFile = generateFilenameWithCount(inputFile,  count, ...args);
+    outputFile = generateFilenameWithCount(inputFile,  count, ...suffixes);
     outputPath = resolve(dirname(inputFile), outputFile);
   }
 
@@ -29,16 +29,15 @@ export function generateUniqueFilename(inputFile, ...args) {
  * @param {number|string} count - Count to append to the filename.
  * @returns {string} - Generated filename.
  */
-function generateFilenameWithCount(inputFile, count, ...args) {
+function generateFilenameWithCount(inputFile, count, ...suffixes) {
   const base = basename(inputFile, extname(inputFile));
   const extension = extname(inputFile);
 
   // Append count to filename only if count is provided
-  console.log("count ",count);  //0
   const fileCount = count!=0? `_(${count})` : ""; 
   
   // Concatenate rest parameters as additional suffixes
-  const additionalSuffixes = args.length !== 0 ? "_" + args.join("_"): ""; 
+  const additionalSuffixes = suffixes.length !== 0 ? "_" + suffixes.join("_"): ""; 
 
   return `${base}${additionalSuffixes}${fileCount}${extension}`;
 }

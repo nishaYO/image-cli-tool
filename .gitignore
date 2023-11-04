@@ -2,5 +2,8 @@ node_modules/
 package-lock.json
 todo.txt
 learnings.txt
-myimg*
 test/testing_notes.txt
+
+# ignore all images but myimg.png
+myimg*
+!myimg.png
