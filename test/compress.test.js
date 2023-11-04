@@ -47,6 +47,8 @@ describe("Compress Command Tests", function () {
   // Cleanup after testing
   after(function () {
     // Delete temporary file created during testing
-    fs.unlinkSync("./myimg_compressed.png");
+    if (fs.existsSync("./myimg_compressed.png")) {
+      fs.unlinkSync("./myimg_compressed.png");
+    }
   });
 });
