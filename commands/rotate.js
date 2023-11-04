@@ -1,4 +1,3 @@
-// rotate.js
 import { Command } from "commander";
 import sharp from "sharp";
 import { join, dirname } from "path";
@@ -16,6 +15,8 @@ rotateCommand
       // create output file name
       const outputFileName = generateUniqueFilename(inputFile, "rotated", rotateAngle);
       const outputFile = join(dirname(inputFile), outputFileName);
+
+      // rotate the inputFile by given angle
       const angle = parseInt(rotateAngle);
       const rotate = await sharp(inputFile).rotate(angle)
         .toFile(outputFile, (err, info) => {
@@ -29,6 +30,7 @@ rotateCommand
       console.error(error.message);
     }
   })  
+  // help option for subcommand rotate
   .on('--help', () => {
     console.log('\nUsage:');
     console.log('  img-cli rotate <inputFile> <rotateAngle>');

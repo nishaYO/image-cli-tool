@@ -12,6 +12,7 @@ compressCommand
   .description('Compress an image')
   .action(async (inputFile, option) => {
     try {
+      
       // create output file name
       const outputFileName = generateUniqueFilename(inputFile, "compressed");
       const outputPath = resolve(dirname(inputFile), outputFileName);
@@ -23,6 +24,7 @@ compressCommand
       }
 
       const quality =  qualityOption || 60; //default compression: 60% 
+      
       // compress input file
       const info = await sharp(inputFile).jpeg({ quality: quality }).toFile(outputFileName);
       console.log(`Image compressed down to ${quality}%.\nSee here: ${outputPath}`);
@@ -30,6 +32,7 @@ compressCommand
       console.error(err.message);
     }
   })
+    // help option for subcommand compress
   .on('--help', () => {
     console.log('\nUsage:');
     console.log('  img-cli compress <inputFile> [-q <quality>]');

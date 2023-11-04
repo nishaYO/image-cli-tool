@@ -9,7 +9,10 @@ infoCommand
   .description('Get information about an image')
   .action(async (inputFile) => {
     try {
+      // fetch inputFile metadata using sharp
       const metadata = await sharp(inputFile).metadata();
+
+      // customize the inputFile metadata
       const imageInfo = {
         Format: (extname(inputFile).slice(1)) || "Unknown",
         Location: resolve(inputFile) || "Unknown",
@@ -27,6 +30,8 @@ infoCommand
       console.error(err);
     }
   })
+
+  // help option for subcommand info
   .on('--help', () => {
     console.log('\nUsage:');
     console.log('  img-cli info <inputFile>');

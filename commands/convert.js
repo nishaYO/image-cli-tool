@@ -12,6 +12,8 @@ convertCommand
   .description('Convert an image to another format')
   .action(async (inputFile, outputFile) => {
     try {
+
+      // fetch extension of both the inputFile and outputFile
       const inputFormat = extname(inputFile);
       const outputFormat = extname(outputFile);
 
@@ -19,6 +21,7 @@ convertCommand
       if (inputFormat == outputFormat){
         throw Error(`The format of <inputFile> and <outputFile> cannot be same. Both files have same format: ${inputFormat}`);
       }
+
       // create output file absolute path
       const outputFileName = generateUniqueFilename(outputFile);
       const outputPath = resolve(dirname(inputFile), outputFileName);
@@ -29,7 +32,9 @@ convertCommand
     } catch (err) {
       console.error(err.message);
     }
-  }).on('--help', () => {
+  })
+    // help option for subcommand convert
+  .on('--help', () => {
     console.log('\nUsage:');
     console.log('  img-cli convert <inputFile> <outputFile>');
     console.log('\nExamples:');
