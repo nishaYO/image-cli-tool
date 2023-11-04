@@ -14,7 +14,7 @@ rotateCommand
   .action(async (inputFile, rotateAngle) => {
     try {
       // create output file name
-      const outputFileName = generateUniqueFilename(inputFile, "_rotated", rotateAngle);
+      const outputFileName = generateUniqueFilename(inputFile, "rotated", rotateAngle);
       const outputFile = join(dirname(inputFile), outputFileName);
       const angle = parseInt(rotateAngle);
       const rotate = await sharp(inputFile).rotate(angle)

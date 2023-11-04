@@ -13,7 +13,7 @@ compressCommand
   .action(async (inputFile, option) => {
     try {
       // create output file name
-      const outputFileName = generateUniqueFilename(inputFile, "_compressed");
+      const outputFileName = generateUniqueFilename(inputFile, "compressed");
       const outputPath = resolve(dirname(inputFile), outputFileName);
 
       // check if the -q option value valid or not
