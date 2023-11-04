@@ -60,6 +60,3 @@ img-cli info myimage.jpg
  ```bash
  img-cli rotate myimage.jpg 90
  ```
-
-# Contribute
-Feel free to explore and contribute to the image-cli-tool! If you have any improvements or additional features inmind, open an issue or submit a pull request. I would be happy to merge🙂
