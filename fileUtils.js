@@ -9,10 +9,9 @@ import { existsSync } from "fs"; // To check if a file exists
  */
 
 export function generateUniqueFilename(inputFile, ...args) {
-  console.log(args);
   // Generate initial filename
   let count = 0;
-  let outputFile = generateFilenameWithCount(inputFile, count, ...args);//here is the issue that the first arg is considered count here
+  let outputFile = generateFilenameWithCount(inputFile, count, ...args);
   let outputPath = resolve(dirname(inputFile), outputFile);
   
   // Check for filename collisions and increment count if needed
@@ -35,15 +34,11 @@ function generateFilenameWithCount(inputFile, count, ...args) {
   const extension = extname(inputFile);
 
   // Append count to filename only if count is provided
-  if (count !== 0) {
-    count = `_(${count})`; //example : myimg_rotated_90_(1).png
-  }
-  else{
-    count = "";
-  }
-  console.log(args);
+  console.log("count ",count);  //0
+  const fileCount = count!=0? `_(${count})` : ""; 
+  
   // Concatenate rest parameters as additional suffixes
-  const additionalSuffixes = "_" + args.join("_");
-  console.log(additionalSuffixes);
-  return `${base}${additionalSuffixes}${count}${extension}`;
+  const additionalSuffixes = args.length !== 0 ? "_" + args.join("_"): ""; 
+
+  return `${base}${additionalSuffixes}${fileCount}${extension}`;
 }

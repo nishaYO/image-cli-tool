@@ -22,7 +22,7 @@ rotateCommand
           if (err) {
             console.error(err.message);
           } else {
-            console.log('Image rotated');
+            console.log(`Image rotated. See here: ${outputFile}`);
           }
         });
     } catch (error) {
