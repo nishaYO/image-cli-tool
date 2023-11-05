@@ -1,5 +1,9 @@
 #!/bin/bash
 
+
+# Purpose: Automate the process of updating the codebase, running tests, committing changes, and optionally merging dev into main.
+#          Its not that I love writing unnecessary scripts but just that I am lazy to run all the commands manually on terminal!
+
 # Function to prompt user for confirmation
 confirm() {
     read -r -p "${1:-Are you sure? [y/N]} " response

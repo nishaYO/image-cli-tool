@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# Purpose: Automate the process of updating the package version, running tests,
+#          and publishing to npm. Ensures a streamlined release workflow.
+
+
 # Function to prompt user for confirmation
 confirm() {
     read -r -p "${1:-Are you sure? [y/N]} " response
