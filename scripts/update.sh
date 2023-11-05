@@ -13,6 +13,9 @@ confirm() {
     esac
 }
 
+# Navigate to the root directory
+cd ..
+
 # Get commit name from user input
 read -p "Enter commit name: " commit_name
 

@@ -13,6 +13,8 @@ confirm() {
     esac
 }
 
+# Navigate to the root directory
+cd ..
 
 # Get the version from user input
 read -p "Enter the version (e.g., 3.0.0): " version
