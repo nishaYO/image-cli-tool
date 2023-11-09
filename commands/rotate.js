@@ -2,6 +2,7 @@ import { Command } from "commander";
 import sharp from "sharp";
 import { join, dirname } from "path";
 import { generateUniqueFilename } from "../fileUtils.js"
+import { logError, logFilePath, logSuccess } from '../utils/colorFormatOutput.js';
 
 const rotateCommand = new Command();
 
@@ -23,22 +24,23 @@ rotateCommand
           if (err) {
             console.error(err.message);
           } else {
-            console.log(`Image rotated. See here: ${outputFile}`);
+            logSuccess("Image rotated.");
+            logFilePath(`See here: ${outputFile}`);
           }
         });
     } catch (error) {
-      console.error(error.message);
+      logError(error.message);
     }
   })  
   // help option for subcommand rotate
   .on('--help', () => {
-    console.log('\nUsage:');
-    console.log('  img-cli rotate <inputFile> <rotateAngle>');
-    console.log('\nExamples:');
-    console.log('  $ img-cli rotate input.jpg 90');
-    console.log('  $ img-cli rotate input.jpg -45');
-    console.log('\nNote:');
-    console.log('  The <rotateAngle> can be any positive or negative angle.');
+    logSuccess('\nUsage:');
+    logSuccess('  img-cli rotate <inputFile> <rotateAngle>');
+    logSuccess('\nExamples:');
+    logSuccess('  $ img-cli rotate input.jpg 90');
+    logSuccess('  $ img-cli rotate input.jpg -45');
+    logSuccess('\nNote:');
+    logSuccess('  The <rotateAngle> can be any positive or negative angle.');
   });
 
 export default rotateCommand;

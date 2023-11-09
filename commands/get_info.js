@@ -3,6 +3,7 @@ import sharp from "sharp";
 import { extname, resolve } from "path";
 const infoCommand = new Command();
 import { statSync } from "fs";
+import { logError, logFilePath, logSuccess } from '../utils/colorFormatOutput.js';
 
 function formatFileSize(size) {
   const units = ['B', 'KB', 'MB', 'GB', 'TB'];
@@ -31,25 +32,26 @@ infoCommand
         Location: resolve(inputFile) || "Unknown",
         Width: metadata.width || "Unknown",
         Height: metadata.height || "Unknown",
-        Density: metadata.density || "Unknown",
-        IsProgressive: metadata.isProgressive || "Unknown",
+        // Density: metadata.density || "Unknown",
+        // IsProgressive: metadata.isProgressive || "Unknown",
         FileSize: formatFileSize(statSync(inputFile).size) || "Unknown"
         // todos
         // createdWhen: "Information not available",
         // geoCoordinates: "Information not available",
       };
-      console.log("Image information\n", imageInfo);
+      logSuccess("Image information\n", imageInfo);
+      console.log(imageInfo)
     } catch (err) {
-      console.error(err);
+      logError(err);
     }
   })
 
   // help option for subcommand info
   .on('--help', () => {
-    console.log('\nUsage:');
-    console.log('  img-cli info <inputFile>');
-    console.log('\nExamples:');
-    console.log('  $ img-cli info input.jpg');
+    logSuccess('\nUsage:');
+    logSuccess('  img-cli info <inputFile>');
+    logSuccess('\nExamples:');
+    logSuccess('  $ img-cli info input.jpg');
   });
 
 export default infoCommand;

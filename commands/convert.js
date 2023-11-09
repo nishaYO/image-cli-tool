@@ -2,7 +2,7 @@ import { Command } from "commander";
 import sharp from "sharp";
 import { extname, resolve, dirname } from "path";
 import {generateUniqueFilename} from "../fileUtils.js"
-
+import { logError, logFilePath, logSuccess } from '../utils/colorFormatOutput.js';
 
 const convertCommand = new Command();
 
@@ -28,19 +28,20 @@ convertCommand
 
       // convert file format
       const info = await sharp(inputFile).toFile(outputFileName);
-      console.log(`Image converted from ${inputFormat} to ${outputFormat} format.\nSee here: ${outputPath}`, );
+      logSuccess(`Image converted from ${inputFormat} to ${outputFormat} format.`, );
+      logFilePath(`See here: ${outputPath}`);
     } catch (err) {
-      console.error(err.message);
+      logError(err.message);
     }
   })
     // help option for subcommand convert
   .on('--help', () => {
-    console.log('\nUsage:');
-    console.log('  img-cli convert <inputFile> <outputFile>');
-    console.log('\nExamples:');
-    console.log('  $ img-cli convert input.jpg output.jpeg');
-    console.log('\nNote:');
-    console.log('  The <inputFile> and <outputFile> must have different formats.');
+    logSuccess('\nUsage:');
+    logSuccess('  img-cli convert <inputFile> <outputFile>');
+    logSuccess('\nExamples:');
+    logSuccess('  $ img-cli convert input.jpg output.jpeg');
+    logSuccess('\nNote:');
+    logSuccess('  The <inputFile> and <outputFile> must have different formats.');
   });
 
 export default convertCommand;

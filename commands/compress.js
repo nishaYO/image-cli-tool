@@ -2,6 +2,8 @@ import { Command } from "commander";
 import sharp from "sharp";
 import { resolve, dirname } from "path";
 import { generateUniqueFilename } from "../fileUtils.js"
+import { logError, logFilePath, logSuccess } from '../utils/colorFormatOutput.js';
+
 
 const compressCommand = new Command();
 
@@ -27,20 +29,22 @@ compressCommand
       
       // compress input file
       const info = await sharp(inputFile).jpeg({ quality: quality }).toFile(outputFileName);
-      console.log(`Image compressed down to ${quality}%.\nSee here: ${outputPath}`);
+      logSuccess(`Image compressed down to ${quality}%.`);
+      logFilePath(`See here: ${outputPath}`);
+
     } catch (err) {
-      console.error(err.message);
+      logError(err.message);
     }
   })
     // help option for subcommand compress
   .on('--help', () => {
-    console.log('\nUsage:');
-    console.log('  img-cli compress <inputFile> [-q <quality>]');
-    console.log('\nExamples:');
-    console.log('  $ img-cli compress input.jpg');
-    console.log('  $ img-cli compress input.jpg -q 80');
-    console.log('\nNote:');
-    console.log('  The value of -q should be between 1 and 100.');
+    logSuccess('\nUsage:');
+    logSuccess('  img-cli compress <inputFile> [-q <quality>]');
+    logSuccess('\nExamples:');
+    logSuccess('  $ img-cli compress input.jpg');
+    logSuccess('  $ img-cli compress input.jpg -q 80');
+    logSuccess('\nNote:');
+    logSuccess('  The value of -q should be between 1 and 100.');
 });
 
 export default compressCommand;
