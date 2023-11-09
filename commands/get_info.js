@@ -2,6 +2,19 @@ import { Command } from "commander";
 import sharp from "sharp";
 import { extname, resolve } from "path";
 const infoCommand = new Command();
+import { statSync } from "fs";
+
+function formatFileSize(size) {
+  const units = ['B', 'KB', 'MB', 'GB', 'TB'];
+
+  let i = 0;
+  while (size >= 1024 && i < units.length - 1) {
+    size /= 1024;
+    i++;
+  }
+
+  return size.toFixed(2) + ' ' + units[i];
+}
 
 infoCommand
   .name("info")
@@ -20,8 +33,8 @@ infoCommand
         Height: metadata.height || "Unknown",
         Density: metadata.density || "Unknown",
         IsProgressive: metadata.isProgressive || "Unknown",
+        FileSize: formatFileSize(statSync(inputFile).size) || "Unknown"
         // todos
-        // FileSize: metadata.size || "Unknown",
         // createdWhen: "Information not available",
         // geoCoordinates: "Information not available",
       };
