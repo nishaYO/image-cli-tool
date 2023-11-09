@@ -1,7 +1,7 @@
 import { expect } from 'chai';
-import { generateUniqueFilename } from '../fileUtils.js'; 
+import { generateUniqueFilename } from "../utils/generateFileName.js"
 
-describe('File Utility Tests', function () {
+describe('File Name Tests', function () {
   // Test case 1: Test generateUniqueFilename function for rotate command
   it('should generate a unique filename for rotate command', function () {
     const inputFile = './myimg.png';

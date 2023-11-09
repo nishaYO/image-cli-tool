@@ -3,7 +3,7 @@ import sharp from "sharp";
 import { extname, resolve } from "path";
 const infoCommand = new Command();
 import { statSync } from "fs";
-import { logError, logFilePath, logSuccess } from '../utils/colorFormatOutput.js';
+import { logError, logSuccess } from '../utils/colorFormatOutput.js';
 
 function formatFileSize(size) {
   const units = ['B', 'KB', 'MB', 'GB', 'TB'];

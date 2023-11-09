@@ -1,7 +1,7 @@
 import { Command } from "commander";
 import sharp from "sharp";
 import { resolve, dirname } from "path";
-import { generateUniqueFilename } from "../fileUtils.js"
+import { generateUniqueFilename } from "../utils/generateFileName.js"
 import { logError, logFilePath, logSuccess } from '../utils/colorFormatOutput.js';
 
 
