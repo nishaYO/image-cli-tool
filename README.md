@@ -1,8 +1,7 @@
 # Image-CLI-Tool 
 
 [![npm version](https://img.shields.io/npm/v/image-cli-tool.svg)](https://www.npmjs.com/package/image-cli-tool)
-[![npm weekly downloads](https://img.shields.io/npm/dw/image-cli-tool.svg)](https://www.npmjs.com/package/image-cli-tool)
-
+[![npm total downloads](https://img.shields.io/npm/dt/image-cli-tool.svg)](https://www.npmjs.com/package/image-cli-tool)
 
 An npm package to manipulate images using terminal.
 
